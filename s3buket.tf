@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "example" {
-  count = 3
+  count = var.example_count
   bucket = "my-tf-test-bucket"
   force_destroy = false
   acl    = "private"
@@ -12,7 +12,8 @@ resource "aws_s3_bucket" "example" {
 
 
 resource "aws_s3_bucket_versioning" "versioning_example" {
-  bucket = aws_s3_bucket.example[count.index]
+  count  = var.example_count
+  bucket = aws_s3_bucket.example[count.index].id
   versioning_configuration {
     status = "Disabled"
   }
@@ -20,7 +21,8 @@ resource "aws_s3_bucket_versioning" "versioning_example" {
 
 
 resource "aws_s3_bucket_object_lock_configuration" "example" {
-  bucket = aws_s3_bucket.example[count.index]
+  count  = var.example_count
+  bucket = aws_s3_bucket.example[count.index].id
 
   rule {
     default_retention {
