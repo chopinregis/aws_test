@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "example" {
   acl    = "private"
 
   tags = {
-    Name        = "My bucket"
+    Name        = "test-bucket-${count.index}"
     Environment = "Dev"
   }
 }
