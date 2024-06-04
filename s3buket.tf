@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "example" {
 
 
 resource "aws_s3_bucket_versioning" "versioning_example" {
-  bucket = aws_s3_bucket.example.id
+  bucket = aws_s3_bucket.example[count.index]
   versioning_configuration {
     status = "Disabled"
   }
@@ -20,7 +20,7 @@ resource "aws_s3_bucket_versioning" "versioning_example" {
 
 
 resource "aws_s3_bucket_object_lock_configuration" "example" {
-  bucket = aws_s3_bucket.example.id
+  bucket = aws_s3_bucket.example[count.index]
 
   rule {
     default_retention {
