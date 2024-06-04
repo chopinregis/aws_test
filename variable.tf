@@ -10,3 +10,8 @@ variable "region" {
   type = string
   default = "us-east-1"
 }
+
+variable "example_count" {
+  type = number
+  default = 3
+}
