@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "example" {
+  count = 3
   bucket = "my-tf-test-bucket"
   force_destroy = false
   acl    = "private"
